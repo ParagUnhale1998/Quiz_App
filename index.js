@@ -41,6 +41,7 @@ const question3 = document.getElementsByTagName("label")[2];
 const question4 = document.getElementsByTagName("label")[3];
 const answershow = document.getElementById("answer-result");
 const scoreShow = document.getElementById("score");
+const correctAnswer = document.getElementById("Canswer");
 
 let index = 0;
 let score = 0;
@@ -51,10 +52,10 @@ function loadQuestions() {
     data = questions[index];
     console.log(data.que);
     quesBox.innerText = data.que;
-    question1.innerText = "1) " + data.a;
-    question2.innerText = "2) " + data.b;
-    question3.innerText = "3) " + data.c;
-    question4.innerText = "4) " + data.d;
+    question1.innerText = "a) " + data.a;
+    question2.innerText = "b) " + data.b;
+    question3.innerText = "c) " + data.c;
+    question4.innerText = "d) " + data.d;
 }
 
 loadQuestions()
@@ -77,7 +78,26 @@ submit.addEventListener("click", () => {
         answershow.innerText = "Please Select answer";
     }
 });
+function next() {
 
+    radioIsChecked();
+console.log(index)
+    
+    if (index < questions.length-1) {
+        index++;
+        loadQuestions();
+    } 
+}
+function prev() {
+
+    radioIsChecked();
+
+    
+    if (index > 0) {
+        index--;
+        loadQuestions();
+    } 
+}
 function nextQuestion() {
 
     radioIsChecked();
@@ -121,16 +141,20 @@ function radioIsChecked() {
                 setTimeout(() => {
                     answershow.innerText = "";
                     scoreShow.innerText = "";
-                }, 2000);
+                    correctAnswer.innerHTML = "";
+                }, 5000);
                 answershow.innerText = "Your Last Answer Is correct";
                 scoreShow.innerText = `your score is ${score}/3`;
             } else {
                 setTimeout(() => {
                     answershow.innerText = "";
                     scoreShow.innerText = "";
-                }, 2000);
+                    correctAnswer.innerHTML = "";
+                }, 5000);
                 answershow.innerText = "Your Last Answer Is Wrong";
                 scoreShow.innerText = `your score is ${score}/3`;
+                correctAnswer.innerHTML = `<span style="color:red;">Correct Answer is ${data.correct} </span>`;
+
             }
         }
         else {
@@ -145,3 +169,4 @@ function uncheckRadioButtons() {
         radio.checked = false;
     });
 }
+
