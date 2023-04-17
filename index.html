@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <h1>Simple Quiz Website</h1>
+     <main>
+    <h1>Simple Quiz</h1>
     <div class="main">
         <div id="box">
             <h2 id="quesBox">this is the dummy questions</h2>
@@ -32,13 +33,17 @@
                     <label for="option4">option 4</label>
                 </div>
             </div>
-                <button class="btn">Submit</button>
+            <button class="prevous" id="prevous" onclick="prev()">prevous</button>
+            <button class="btn">Submit</button>
+            <button class="next" id="next" onclick="next()">next</button>
                 <div class="result">
                     <h4 id="answer-result"></h4>
                     <h4 id="score"></h4>
+                    <h4 id="Canswer"></h4>
                 </div>
         </div>
     </div>
+</main>
     <script src="/index.js"></script>
 </body>
 
